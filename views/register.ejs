@@ -5,6 +5,11 @@
     <%- include('includes/nav'); %>
     <div class="container">
       <h1>Registration</h1>
+      <% if (message) { %>
+        <div class="alert alert-success" role="alert">
+          <%= message %>
+        </div>
+      <% } %>
       <form method="POST" action="/register">
 
         <div class="mb-3">
