@@ -1,13 +1,14 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { addUser } = require("../modules/users/service/userService");
-const {registerSchema } = require("../modules/users/validations/AuthValidations")
+const { addUser } = require('../modules/users/service/userService');
+const { registerSchema } = require('../modules/users/validations/AuthValidations');
+const { joierrorformatter , mongooseErrorFormatter } = require('../utils/validationFormatter');
 /**
  * Show page for user registration
  */
-router.get("/register", (req, res) => {
-  return res.render("register", { message: null });
-});
+ router.get('/register', (req, res) => {
+  return res.render('register', { message: null })
+})
 /**
  * Handles user registration
  */
@@ -18,6 +19,7 @@ router.post("/register", async (req, res) => {
       abortEarly: false
     })
     if (validationsResult.error){
+      //return res.send(joierrorformatter(validationsResult.error))
       return res.render('register',{message: 'Validation Errors'})
     }
 
@@ -25,6 +27,7 @@ router.post("/register", async (req, res) => {
     return res.render('register', { message: "Registration Success" });
   } catch (e) {
     console.error(e);
+    return res.send(mongooseErrorFormatter(e))
     return res.status(400).render('register', { message: "Registration Failure" });
   }
 });
