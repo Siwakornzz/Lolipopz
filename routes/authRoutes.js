@@ -7,7 +7,7 @@ const { joiErrorFormatter , mongooseErrorFormatter } = require('../utils/validat
  * Show page for user registration
  */
  router.get('/register', (req, res) => {
-  return res.render('register', { message: {},formData:{},erros:{} })
+  return res.render('register', { message: {},formData:{},errors:{}})
 })
 /**
  * Handles user registration
@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
     if (validationsResult.error){
       return res.render('register',{
         message:{
-          type:'error',
+          type:'danger',
           body:'Validation Errors'
         },
         errors:joiErrorFormatter(validationsResult.error),
@@ -41,7 +41,7 @@ router.post("/register", async (req, res) => {
     console.error(e);
     return res.status(400).render('register',{
       message:{
-        type:'error',
+        type:'danger',
         body:'Validation Errors'
       },
         errors:mongooseErrorFormatter(e),

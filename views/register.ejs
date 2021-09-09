@@ -6,7 +6,7 @@
     <div class="container">
       <h1>Registration</h1>
       <% if (message) { %>
-        <div class="alert alert-<%= message.type === 'success' ? 'success' : 'danger' %>" role="alert">
+        <div class="alert alert-<%= message.type %>" role="alert">
           <%= message.body %>
         </div>
       <% } %>
