@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head'); %>
+  <body>
+    <%- include('includes/nav'); %>
+    <div class="container">
+      <h1>Login</h1>
+      <% if (message) { %>
+        <div class="alert alert-<%= message.type %>" role="alert">
+          <%= message.body %>
+        </div>
+      <% } %>
+      <form method="POST" action="/login">
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control <%= errors.username ? 'is-invalid' : '' %>"
+              id="username"
+              name="username"
+              value="<%= formData.username %>"
+              maxlength="64"
+              minlength="2"
+              required
+            />
+            <% if (errors.username) { %>
+              <div class="invalid-feedback">
+                <%= errors.username[0] %>
+              </div>
+            <% } %>
+          </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control <%= errors.password ? 'is-invalid' : '' %>"
+            id="password"
+            name="password"
+            value="<%= formData.password %>"
+            required
+          />
+          <% if (errors.password) { %>
+            <div class="invalid-feedback">
+              <%= errors.password[0] %>
+            </div>
+          <% } %>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+      <%- include('includes/footer'); %>
+    </div>
+  </body>
+</html>

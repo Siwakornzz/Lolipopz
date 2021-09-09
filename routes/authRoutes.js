@@ -50,4 +50,21 @@ router.post("/register", async (req, res) => {
   }
 });
 
+/**
+ * Show page for user login
+ */
+ router.get('/login', (req, res) => {
+  return res.render('login', { message: {},formData:{},errors:{}})
+})
+
+/**
+ * login a user
+ */
+ router.post('/login', (req, res) => {
+  return res.render('login', { message: {
+    type:'success',
+    body: 'Login Successfully'
+  },formData:{},errors:{}})
+})
+
 module.exports = router;
