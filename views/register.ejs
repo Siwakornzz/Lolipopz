@@ -6,8 +6,8 @@
     <div class="container">
       <h1>Registration</h1>
       <% if (message) { %>
-        <div class="alert alert-success" role="alert">
-          <%= message %>
+        <div class="alert alert-<%= message.type === 'success' ? 'success' : 'danger' %>" role="alert">
+          <%= message.body %>
         </div>
       <% } %>
       <form method="POST" action="/register">
@@ -16,34 +16,68 @@
             <label for="username" class="form-label">Username</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control <%= errors.username ? 'is-invalid' : '' %>"
               id="username"
               name="username"
-              aria-describedby="emailHelp"
+              value="<%= formData.username %>"
+              maxlength="64"
+              minlength="2"
+              required
             />
+            <% if (errors.username) { %>
+              <div class="invalid-feedback">
+                <%= errors.username[0] %>
+              </div>
+            <% } %>
           </div>
 
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
           <input
             type="email"s
-            class="form-control"
+            class="form-control <%= errors.email ? 'is-invalid' : '' %>"
             id="email"
             name="email"
+            value="<%= formData.email %>"
             aria-describedby="emailHelp"
+            required
           />
+          <% if (errors.email) { %>
+            <div class="invalid-feedback">
+              <%= errors.email[0] %>
+            </div>
+          <% } %>
           <div id="emailHelp" class="form-text">
             We'll never share your email with anyone else.
           </div>
+          
         </div>
 
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input
             type="password"
-            class="form-control"
+            class="form-control <%= errors.password ? 'is-invalid' : '' %>"
             id="password"
             name="password"
+            value="<%= formData.password %>"
+            required
+          />
+          <% if (errors.password) { %>
+            <div class="invalid-feedback">
+              <%= errors.password[0] %>
+            </div>
+          <% } %>
+        </div>
+
+        <div class="mb-3">
+          <label for="repeat_password" class="form-label">Re-Password</label>
+          <input
+            type="password"
+            class="form-control <%= errors.password ? 'is-invalid' : '' %>"
+            id="repeat_password"
+            name="repeat_password"
+            required
           />
         </div>
 

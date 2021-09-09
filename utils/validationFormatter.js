@@ -1,4 +1,4 @@
-const joierrorformatter = (rawErrors) =>{
+const joiErrorFormatter = (rawErrors) =>{
     const errors = {}
     const details = rawErrors.details
     details.map(d =>{ 
@@ -16,4 +16,4 @@ const mongooseErrorFormatter = (rawErrors) =>{
    return errors
 }
 
-module.exports = {joierrorformatter,mongooseErrorFormatter}
+module.exports = {joiErrorFormatter,mongooseErrorFormatter}
