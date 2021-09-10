@@ -8,16 +8,7 @@ const {
   joiErrorFormatter,
   mongooseErrorFormatter,
 } = require("../utils/validationFormatter");
-
-const m1 = (req, res, next) => {
-  req.user = "Guest";
-  next();
-};
-
-const m2 = (req,res,next)=>{
-  console.log(req.url)
-  next();
-};
+const passport = require("passport");
 
 /**
  * Show page for user registration
@@ -77,19 +68,23 @@ router.get("/login", (req, res) => {
 /**
  * login a user
  */
-router.post("/login", m1,m2, (req, res) => {
-  console.log(req.user);
+router.post("/login", passport.authenticate('local',
+  { successRedirect: '/login-success',
+    failureRedirect: '/login-failed'
+  }),(req, res) => {
+    console.log(req.user);
 
-  return res.render("login", {
-    message: {
-      type: "success",
-      body: "Login Successfully",
-    },
-    formData: {},
-    errors: {},
+    return res.render("login", {
+      message: {
+        type: "success",
+        body: "Login Successfully",
+      },
+      formData: {},
+      errors: {},
+    });
   });
-});
 
 // login middleware
 const logMid = (req, res, next) => {};
+
 module.exports = router;
