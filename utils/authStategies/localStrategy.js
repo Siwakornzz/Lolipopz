@@ -10,7 +10,10 @@ passport.use(
   async (username, password, done) => {
     try {
       const user = await User.findOne({ username });
-      return done(null, user);
+      if (!user) done(null, false)
+      if (await user.checkPassword(password)) return done(null, user);
+
+      done(null,false)
     } catch (e) {
       done(e);
     }
