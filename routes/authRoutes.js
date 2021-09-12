@@ -9,17 +9,15 @@ const {
   mongooseErrorFormatter,
 } = require("../utils/validationFormatter");
 const passport = require("passport");
+const guestMiddleware = require('../middleware/guestMiddleware')
 
-/**
- * Show page for user registration
- */
-router.get("/register", (req, res) => {
+// Show page for user registration
+router.get("/register",guestMiddleware, (req, res) => {
   return res.render("register", { message: {}, formData: {}, errors: {} });
 });
-/**
- * Handles user registration
- */
-router.post("/register", async (req, res) => {
+
+// Handles user registration
+router.post("/register", guestMiddleware,async (req, res) => {
   try {
     //check validationResult
     const validationsResult = registerSchema.validate(req.body, {
@@ -58,19 +56,15 @@ router.post("/register", async (req, res) => {
   }
 });
 
-/**
- * Show page for user login
- */
-router.get("/login", (req, res) => {
+// Show page for user login
+router.get("/login", guestMiddleware,(req, res) => {
   return res.render("login", { message: {}, formData: {}, errors: {} });
 });
 
-/**
- * login a user
- */
-router.post("/login", passport.authenticate('local',
-  { successRedirect: '/login-success',
-    failureRedirect: '/login-failed'
+// login a user
+router.post("/login",guestMiddleware, passport.authenticate('local',
+  { successRedirect: '/',
+    failureRedirect: '/login'
   }),(req, res) => {
     console.log(req.user);
 
@@ -83,8 +77,5 @@ router.post("/login", passport.authenticate('local',
       errors: {},
     });
   });
-
-// login middleware
-const logMid = (req, res, next) => {};
 
 module.exports = router;

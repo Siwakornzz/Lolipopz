@@ -2,10 +2,13 @@ const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 require('./utils/db')
+
 const MongoStore = require('connect-mongo')(session)
+const mongoDbConnection = require('./utils/db')
 const passport = require('passport')
 require('./utils/authStategies/localStrategy')
-const mongoDbConnection = require('./utils/db')
+
+const authMiddleware = require('./middleware/authMiddleware')
 const authRoutes = require('./routes/authRoutes')
 const app = express()
 
@@ -25,11 +28,14 @@ app.use(passport.session());
 
 app.use('/', authRoutes)
 
-app.get('/', (req, res) => {
+app.get('/',authMiddleware, (req, res) => {
   console.log ('User : ', req.user)
   return res.render('index')
 })
 
+app.get('/home',authMiddleware, (req, res) =>{
+  res.send(`Welcome : ${req.user.username}`)
+})
 app.listen(3000, () => {
   console.log('Server Running at port 3000')
 })
