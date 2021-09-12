@@ -2,20 +2,23 @@ const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 require('./utils/db')
+const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 require('./utils/authStategies/localStrategy')
-
+const mongoDbConnection = require('./utils/db')
 const authRoutes = require('./routes/authRoutes')
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs')
+
 // app.set('trust proxy', 1)
 app.use(session({
   secret: '4ad8e54c95800e9668650ce54b99829e4a5b5d53',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: true },
+  store: new MongoStore({ mongooseConnection: mongoDbConnection })
 }))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -23,8 +26,6 @@ app.use(passport.session());
 app.use('/', authRoutes)
 
 app.get('/', (req, res) => {
- 
-  req.session.views = (req.session.views || 0)+1
   console.log ('User : ', req.user)
   return res.render('index')
 })
