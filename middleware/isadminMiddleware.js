@@ -7,6 +7,9 @@ const isadminMiddleware = (req, res, next) => {
             return res.status(404).render('404')
         } 
     }
+    else{
+        return res.status(404).render('404')
+    }
   }
   
   module.exports = isadminMiddleware

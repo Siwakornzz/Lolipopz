@@ -40,8 +40,13 @@ app.get('/', isloginMiddleware,flasherMiddleware, (req, res) => {
   return res.render('index')
 })
 
-app.get('/home', isadminMiddleware,authMiddleware, (req, res) => {
-  res.render('home')
+app.get('/home',authMiddleware, (req, res) => {
+  if (req.user.admin == true){
+    res.render('admin')
+  }
+  else{
+    res.render('home')
+  }
 })
 app.get('/admin', isadminMiddleware , (req, res) => {
  res.render('admin')
