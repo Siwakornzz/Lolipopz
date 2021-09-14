@@ -1,6 +1,7 @@
 const authMiddleware = (req, res, next) => {
-    if (req.isAuthenticated()) return next()
-    res.redirect('/login')
-  }
+  if (req.isAuthenticated()) return next()
 
-  module.exports = authMiddleware
+  res.redirect('/login')
+}
+
+module.exports = authMiddleware
