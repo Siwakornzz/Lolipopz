@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Password is required'],
     },
+    status:{
+        type: String,
+        default : 'Member'
+    },
     isActive:{
         type:Boolean,
         default: true
