@@ -20,7 +20,7 @@ app.use(session({
   secret: '4ad8e54c95800e9668650ce54b99829e4a5b5d53',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true },
+  cookie: { secure: false},
   store: new MongoStore({ mongooseConnection: mongoDbConnection })
 }))
 app.use(logger('dev'))

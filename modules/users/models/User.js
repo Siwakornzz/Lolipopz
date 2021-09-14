@@ -19,9 +19,13 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Password is required'],
     },
-    status:{
-        type: String,
-        default : 'Member'
+    admin:{
+        type: Boolean,
+        default : false
+    },
+    point:{
+        type: Number,
+        default : 0
     },
     isActive:{
         type:Boolean,
@@ -34,6 +38,18 @@ const userSchema = mongoose.Schema({
 },{
     timestamps:true
 })
+
+// unique email and username 
+userSchema.path('username').validate(async (username) => {
+    const usernameCount = await mongoose.models.users.countDocuments({ username })
+    return !usernameCount
+  },'Username already exists')
+userSchema.path('email').validate(async (email) => {
+    const emailCount = await mongoose.models.users.countDocuments({ email })
+    return !emailCount
+  },'Email already exists')
+ 
+
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) next()
