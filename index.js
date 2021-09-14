@@ -9,6 +9,7 @@ const passport = require('passport')
 require('./utils/authStategies/localStrategy')
 const authMiddleware = require('./middleware/authMiddleware')
 const authRoutes = require('./routes/authRoutes')
+const flasherMiddleware = require('./middleware/flasherMiddleware')
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -31,7 +32,8 @@ app.locals.errors = {}
 
 app.use('/', authRoutes)
 
-app.get('/', (req, res) => {
+app.get('/', flasherMiddleware, (req, res) => {
+  console.log(req.method)
   console.log('User:', req.user)
   return res.render('index')
 })

@@ -3,6 +3,11 @@
 <%- include('includes/head'); %>
 <body>
     <%- include('includes/nav'); %>
+    <% if (message.type) { %>
+        <div class="alert alert-<%= message.type%>" role="alert">
+          <%= message.body %>
+        </div>
+      <% } %>
     <h1>Bitch !</h1>
     <%- include('includes/footer'); %>
 </body>

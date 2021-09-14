@@ -8,24 +8,24 @@ passport.use(new LocalStrategy({
 async (username, password, done) => {
   try {
     const user = await User.findOne({ username })
-    if (!user) done(null, false)
+    if (!user) return done(null, false, {error : 'User not found'})
     if (await user.checkPassword(password)) return done(null, user)
-    done(null, false)
+    done(null, false,{error: 'Incorrect password'})
   } catch (e) {
-    done(e)
+    return done(e)
   }
 }))
 
 passport.serializeUser((user, done) => {
-  done(null, user._id)
+  return done(null, user._id)
 })
 
 passport.deserializeUser(async (_id, done) => {
   try {
     const user = await User.findOne({ _id })
-    done(null, user)
+    return done(null, user)
   } catch (e) {
-    done(e)
+    return done(e)
   }
 })
 
