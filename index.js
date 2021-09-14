@@ -10,6 +10,8 @@ require('./utils/authStategies/localStrategy')
 const authMiddleware = require('./middleware/authMiddleware')
 const authRoutes = require('./routes/authRoutes')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
+const isloginMiddleware = require('./middleware/isloginMiddleware')
+const isadminMiddleware = require('./middleware/isadminMiddleware')
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -32,16 +34,18 @@ app.locals.errors = {}
 
 app.use('/', authRoutes)
 
-app.get('/', flasherMiddleware, (req, res) => {
+app.get('/', isloginMiddleware,flasherMiddleware, (req, res) => {
   console.log(req.method)
   console.log('User:', req.user)
   return res.render('index')
 })
 
-app.get('/home', authMiddleware, (req, res) => {
-  res.send(`welcome ${req.user.username}`)
+app.get('/home', isadminMiddleware,authMiddleware, (req, res) => {
+  res.render('home')
 })
-
+app.get('/admin', isadminMiddleware , (req, res) => {
+ res.render('admin')
+})
 app.use((req, res, next) => {
   res.status(404).render('404')
 })

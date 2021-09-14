@@ -1,0 +1,12 @@
+.navbar-custom{
+    background-color: rgba(15,15,15,0.9);
+    border-bottom: 2px solid #e41e26;
+}
+
+a{
+    color :#fff;
+    text-decoration: none;
+}
+a:hover{
+    color : rgb(155, 155, 155);
+}
