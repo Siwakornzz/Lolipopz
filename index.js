@@ -1,6 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
+const logger = require('morgan')
 require('./utils/db')
 const MongoStore = require('connect-mongo')(session)
 const mongoDbConnection = require('./utils/db')
@@ -12,6 +13,7 @@ const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs')
+app.use(express.static("public"));
 // app.set('trust proxy', 1)
 app.use(session({
   secret: '4ad8e54c95800e9668650ce54b99829e4a5b5d53',
@@ -20,6 +22,7 @@ app.use(session({
   cookie: { secure: true },
   store: new MongoStore({ mongooseConnection: mongoDbConnection })
 }))
+app.use(logger('dev'))
 app.use(passport.initialize())
 app.use(passport.session())
 app.locals.message = {}
