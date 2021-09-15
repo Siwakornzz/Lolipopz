@@ -54,7 +54,16 @@ app.get('/admin', isadminMiddleware , (req, res) => {
 app.use((req, res, next) => {
   res.status(404).render('404')
 })
-
+app.get('/admin/user',(req,res) => {
+  if (!req.user.admin == true){
+    res.redirect('404')
+  }else{
+    return res.json(user)
+  }
+})
+app.get('/test', (req, res) => {
+  res.render('test')
+})
 app.listen(3000, () => {
   console.log('Server running at port 3000')
 })

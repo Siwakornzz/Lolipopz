@@ -50,7 +50,7 @@ userSchema.path('email').validate(async (email) => {
   },'Email already exists')
  
 
-
+// checkpassword compare hash 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) next()
     
