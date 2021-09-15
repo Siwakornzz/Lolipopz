@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const { addUser } = require('../modules/users/service/userService')
 const { registerSchema } = require('../modules/users/validations/AuthValidations')
 const { joiErrorFormatter, mongooseErrorFormatter } = require('../utils/validationFormatter')
 const passport = require('passport')
@@ -8,6 +7,9 @@ const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require('../middleware/authMiddleware')
 const flasherMiddleware = require('../middleware/flasherMiddleware')
 const isadminMiddleware = require('../middleware/isadminMiddleware')
+const services = require('../modules/users/service/render');
+const usercontroller = require('../controller/usercontroller')
+const productscontroller = require('../controller/productscontroller')
 /**
  * Shows page for user registration
  */
@@ -127,5 +129,26 @@ router.get('/profile',authMiddleware,(req,res) => {
   }})
 
 })
+
+// router crud api user
+router.get('/adduser', services.adduser)
+
+router.get('/updateuser', services.updateuser)
+
+// router crud api product
+router.get('/addproduct', services.addproduct)
+router.get('/updateproduct', services.updateproduct)
+
+// API User
+router.post('/api/users', usercontroller.usercreate);
+router.get('/api/users', usercontroller.userfind);
+router.put('/api/users/:id', usercontroller.userupdate);
+router.delete('/api/users/:id', usercontroller.userdelete);
+
+// API Products
+router.post('/api/product', productscontroller.productscreate);
+router.get('/api/product', productscontroller.productfind);
+router.put('/api/product/:id', productscontroller.productupdate);
+router.delete('/api/product/:id', productscontroller.productdelete);
 
 module.exports = router
