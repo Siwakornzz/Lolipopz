@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/head'); %>
+<body>
+    <%- include('includes/nav'); %>
+    <% if (profile) { %>
+    <h1> Name : <%= profile.username %> </h1>
+    <h1> Email : <%= profile.email %> </h1>
+    <h1> Point : <%= profile.point %> </h1>
+    <% } %>
+</body>
+</html>

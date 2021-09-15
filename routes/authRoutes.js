@@ -7,7 +7,7 @@ const passport = require('passport')
 const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require('../middleware/authMiddleware')
 const flasherMiddleware = require('../middleware/flasherMiddleware')
-
+const isadminMiddleware = require('../middleware/isadminMiddleware')
 /**
  * Shows page for user registration
  */
@@ -115,6 +115,17 @@ router.get('/logout', authMiddleware, (req, res) => {
     }
   }
   return res.redirect('/')
+})
+
+// profile page
+router.get('/profile',authMiddleware,(req,res) => {
+  return res.render('profile',  
+  {profile: {
+    username: req.user.username,
+    email: req.user.email,
+    point : req.user.point
+  }})
+
 })
 
 module.exports = router

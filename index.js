@@ -40,44 +40,13 @@ app.get('/', isloginMiddleware,flasherMiddleware, (req, res) => {
   return res.render('index')
 })
 
-app.get('/topup',(req, res) => {
-  return res.render('topup')
-})
-
 app.get('/home',authMiddleware, (req, res) => {
-  if (req.user.admin == true){
-    return res.render('admin')
-  }
-  else{
+
     return res.render('home')
-  }
 })
 
 app.get('/admin', isadminMiddleware , (req, res) => {
  res.render('admin')
-})
-
-app.get('/test', (req, res) => {
-  return res.render('test')
-})
-
-app.get('/admingetuser',isadminMiddleware,(req,res) => {
-  const username = req.user.username;
-  const email = req.user.email;
-  const point = req.user.point;
-  const status = req.user.admin;
-  let statuss = ""
-  if (status == 1){
-    statuss = "Admin"
-  }
-  else if (status == 0){
-    statuss = "Member"
-  }
-  else {
-    statuss = "Guest"
-  }
-  res.send("Username : "  + username + "Email : " +  email + "Point : " + point + "Status : " + statuss)
-
 })
 
 app.use((req, res, next) => {
