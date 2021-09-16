@@ -145,10 +145,12 @@ router.get('/adduser', services.adduser)
 router.get('/updateuser', services.updateuser)
 
 // router crud api product
+router.get('/checkproduct', services.checkproduct)
 router.get('/addproduct', authMiddleware, services.addproduct)
 router.get('/updateproduct', services.updateproduct)
 
 // router crud api topup 
+router.get('/checktopup', services.checktopup)
 router.get('/topup', services.addtopup)
 router.get('/updatetopup', services.updatetopup)
 

@@ -28,8 +28,17 @@
                                     <td>
                                         <%= products[i].price %>
                                     </td>
+                                    <td>
+                                        <a href="/updateproduct?id=<%= products[i]._id%>" class="btn border-shadow update">
+                                        Update<span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                    </a>
+                                        <a class="btn border-shadow delete" data-id=<%=products[i]._id%> >
+                                        Delete<span class="text-gradient"><i class="fas fa-times"></i></span>
+                                    </a>
+                                    </td>
 
                                 </tr>
+
                             </table>
                             <% } %>
             </div>
