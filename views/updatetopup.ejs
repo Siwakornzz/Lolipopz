@@ -24,15 +24,15 @@
                 <form action="/api/topup" method="POST" id="updatetopup">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username">
+                        <input type="text" class="form-control" id="username" name="username" value="<%= topup.username %>">
                     </div>
                     <div class="form-group">
                         <label for="username">Amount</label>
-                        <input type="text" class="form-control" id="amount" name="amount">
+                        <input type="text" class="form-control" id="amount" name="amount" value="<%= topup.amount %>">
                     </div>
                     <div class="form-group">
                         <label for="username">Ref</label>
-                        <input type="text" class="form-control" id="ref" name="ref">
+                        <input type="text" class="form-control" id="ref" name="ref" value="<%= topup.ref %>">
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label> &nbsp;&nbsp;&nbsp;
