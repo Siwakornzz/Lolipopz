@@ -139,25 +139,25 @@ router.get('/profile', authMiddleware, (req, res) => {
 // product page
 router.get('/products', services.products)
 
-// user page
-router.get('/user', services.users)
+// user data page
+router.get('/user',isadminMiddleware, services.users)
 
 // router crud api user
 
 router.get('/updateuser', services.updateuser)
 
 // router crud api product
-router.get('/checkproduct', services.checkproduct)
-router.get('/addproduct', authMiddleware, services.addproduct)
-router.get('/updateproduct', services.updateproduct)
+router.get('/checkproduct', isadminMiddleware,services.checkproduct)
+router.get('/addproduct', isadminMiddleware, services.addproduct)
+router.get('/updateproduct', isadminMiddleware,services.updateproduct)
 
 // router crud api topup 
-router.get('/checktopup', services.checktopup)
+router.get('/checktopup', isadminMiddleware,services.checktopup)
 router.get('/topup', services.addtopup)
-router.get('/updatetopup', services.updatetopup)
+router.get('/updatetopup',isadminMiddleware, services.updatetopup)
 
 // API User
-router.get('/api/users', usercontroller.userfind);
+router.get('/api/users',usercontroller.userfind);
 router.put('/api/users/:id', usercontroller.userupdate);
 router.delete('/api/users/:id', usercontroller.userdelete);
 

@@ -8,7 +8,8 @@ const productsSchema = mongoose.Schema({
         type: String
     },
     version: {
-        type: String
+        type: String,
+        default : "1.0.0"
     },
     price: {
         type: Number,

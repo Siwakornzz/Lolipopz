@@ -4,7 +4,7 @@
 <%- include('includes/head'); %>
 
     <body>
-        <%- include('includes/nav'); %>
+        <%- include('includes/navadmin'); %>
             <div class="container">
                 <% if (message.type) { %>
                     <div class="alert alert-<%= message.type%>" role="alert">
@@ -46,16 +46,19 @@
                                             <td>
                                                 <a href="/updatetopup?id=<%= topup[i]._id%>" class="btn border-shadow update">
                                                     <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                                    Update
                                                 </a>
                                                 <a class="btn border-shadow delete" data-id=<%=topup[i]._id%> >
-                                                                                                                      <span class="text-gradient"><i class="fas fa-times"></i></span>
-                                                                                                                  </a></td>
+                                                    Delete
+                                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                                </a>
+                                            </td>
                                         </tr>
-
+                                        <% } %>
                                 </tbody>
                             </table>
                         </div>
-                        <% } %>
+                       
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>
             <script src="/javascript/index.js "></script>

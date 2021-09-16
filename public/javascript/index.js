@@ -72,7 +72,11 @@ $("#updateproduct").submit(function(event) {
     }
 
     $.ajax(request).done(function(response) {
-        alert("Data Updated Successfully!");
+        Swal.fire({
+            title: 'LOLIPOPZ',
+            text: 'Data Inserted Successfully',
+            icon: 'success'
+        })
     })
 
 })
@@ -99,7 +103,11 @@ if (window.location.pathname == "/checkproduct") {
 }
 
 $("#addtopup").submit(function(event) {
-    alert("Data Inserted Successfully!");
+    Swal.fire({
+        title: 'LOLIPOPZ',
+        text: 'Data Inserted Successfully',
+        icon: 'Success'
+    })
 })
 
 $("#updatetopup").submit(function(event) {
@@ -114,13 +122,11 @@ $("#updatetopup").submit(function(event) {
     })
 
 
-
     var request = {
         "url": `http://localhost:3000/api/topup/${data.id}`,
         "method": "PUT",
         "data": data
     }
-
     $.ajax(request).done(function(response) {
         alert("Data Updated Successfully!");
     })

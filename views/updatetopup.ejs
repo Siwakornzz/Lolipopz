@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <%- include('includes/navadmin'); %>
     <div class="col-md-6 offset-md-3">
         <span class="anchor" id="formPayment"></span>
         <hr class="my-5">
@@ -21,9 +22,10 @@
             <div class="card-body">
                 <h3 class="text-center">Update topup</h3>
                 <hr>
-                <form action="/api/topup" method="POST" id="updatetopup">
+                <form method="POST" id="updatetopup">
                     <div class="form-group">
                         <label for="username">Username</label>
+                        <input type="hidden" name="id" value=<%=topup._id %>>
                         <input type="text" class="form-control" id="username" name="username" value="<%= topup.username %>">
                     </div>
                     <div class="form-group">
@@ -39,13 +41,13 @@
                         <select name="status" id="status"> 
                                 <option value="waiting">Waiting</option>
                                 <option value="accept">Confirm</option>
-                                <option value="opel">Deny</option>
+                                <option value="deny">Deny</option>
                               </select>
                     </div>
                     <hr>
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-success btn-lg btn-block">Save</button>
+                            <button type="submit" class="btn btn-success btn-lg btn-block update">Save</button>
                         </div>
                     </div>
                 </form>
@@ -53,6 +55,6 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script src="/javascript/index.js"></script>
-</body>
+    </body>
 
 </html>
