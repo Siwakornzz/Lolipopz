@@ -27,6 +27,7 @@ router.post('/register', guestMiddleware, async(req, res) => {
         const validationResult = registerSchema.validate(req.body, {
             abortEarly: false
         })
+        console.log(validationResult.error)
         if (validationResult.error) {
             req.session.flashData = {
                 message: {
