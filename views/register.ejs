@@ -68,7 +68,8 @@
 
               <div class="form-floating mb-3">
                 <label for="floatingPassword">Password</label>
-                <input type="password" class="form-control" id="floatingPassword" name = "password" placeholder="Password">
+                <input type="password" class="form-control" id="floatingPassword" name ="password" placeholder="Password" required>
+                
                 <% if (message.password) { %>
                   <div class="invalid-feedback">
                     <%= message.password[0] %>

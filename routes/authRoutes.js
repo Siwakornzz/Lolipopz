@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { registerSchema } = require('../modules/users/validations/AuthValidations')
 const { joiErrorFormatter, mongooseErrorFormatter } = require('../utils/validationFormatter')
+const { addUser } = require('../modules/users/service/userService')
 const passport = require('passport')
 const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require('../middleware/authMiddleware')
@@ -23,11 +24,11 @@ router.get('/register', guestMiddleware, flasherMiddleware, (req, res) => {
  * Handles user registration
  */
 router.post('/register', guestMiddleware, async(req, res) => {
+    
     try {
         const validationResult = registerSchema.validate(req.body, {
             abortEarly: false
         })
-        console.log(validationResult.error)
         if (validationResult.error) {
             req.session.flashData = {
                 message: {
@@ -141,7 +142,6 @@ router.get('/products', services.products)
 router.get('/user', services.users)
 
 // router crud api user
-router.get('/adduser', services.adduser)
 
 router.get('/updateuser', services.updateuser)
 
@@ -156,7 +156,6 @@ router.get('/topup', services.addtopup)
 router.get('/updatetopup', services.updatetopup)
 
 // API User
-router.post('/api/users', usercontroller.usercreate);
 router.get('/api/users', usercontroller.userfind);
 router.put('/api/users/:id', usercontroller.userupdate);
 router.delete('/api/users/:id', usercontroller.userdelete);
