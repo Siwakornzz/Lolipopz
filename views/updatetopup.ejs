@@ -1,57 +1,58 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
-<%- include('includes/head'); %>
 
-    <body>
-        <main id="site-main">
-            <div class="container">
-                <div class="box-nav d-flex justify-between">
-                    <div class="filter">
-                        <a href="/topup"><i class="fas fa-angle-double-left"></i> All Topup</a>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="col-md-6 offset-md-3">
+        <span class="anchor" id="formPayment"></span>
+        <hr class="my-5">
+
+        <!-- form card cc payment -->
+        <div class="card card-outline-secondary">
+            <div class="card-body">
+                <h3 class="text-center">Update topup</h3>
+                <hr>
+                <form action="/api/topup" method="POST" id="updatetopup">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username">
                     </div>
-                </div>
-                <div class="form-title text-center">
-                    <h2 class="text-dark">Update Topup</h2>
-                    <span class="text-light">Use the below form to Update an topup</span>
-                </div>
-
-                <!-- add user form -->
-                <!-- form handling -->
-                <form method="POST" id="updatetopup">
-                    <div class="newtopup">
-                        <div class="form-group">
-                            <label for="username" class="text-light">Username</label>
-                            <input type="hidden" name="id" value=<%=topup._id %>>
-                            <input type="text" name="username" value="<%= topup.username %>" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="text-light">Amount</label>
-                            <input type="text" name="amount" value="<%= topup.amount%>" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="description" class="text-light">Ref</label>
-                            <input type="text" name="ref" value="<%=topup.ref%>" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="price" class="text-light">Status</label>
-                            <input type="text" name="price" value="<%=topup.ref%>" placeholder="">
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <button type="submit" class="btn text-dark update">Save</button>
-                        </div>
-
+                    <div class="form-group">
+                        <label for="username">Amount</label>
+                        <input type="text" class="form-control" id="amount" name="amount">
                     </div>
-
+                    <div class="form-group">
+                        <label for="username">Ref</label>
+                        <input type="text" class="form-control" id="ref" name="ref">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label> &nbsp;&nbsp;&nbsp;
+                        <select name="status" id="status"> 
+                                <option value="waiting">Waiting</option>
+                                <option value="accept">Confirm</option>
+                                <option value="opel">Deny</option>
+                              </select>
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success btn-lg btn-block">Save</button>
+                        </div>
+                    </div>
                 </form>
-
             </div>
-
-        </main>
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script src="/javascript/index.js"></script>
-    </body>
+</body>
 
 </html>

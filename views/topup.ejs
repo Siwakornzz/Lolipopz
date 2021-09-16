@@ -1,37 +1,48 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-        topup
-        <form action="/api/topup" method="POST" id="add_user">
-            <div class="new_product">
-                <div class="form-group">
-                    <label for="username" class="text-light">Username</label>
-                    <input type="hidden" name="id" value="">
-                    <input type="text" name="username" value="" placeholder="Mark Stoenis">
-                </div>
-                <div class="form-group">
-                    <label for="amount" class="text-light">amount</label>
-                    <input type="text" name="amount" value="" placeholder="example@gmail.com">
-                </div>
-                <div class="form-group">
-                    <label for="amount" class="text-light">ref</label>
-                    <input type="text" name="ref" value="" placeholder="example@gmail.com">
-                </div>
-                
-               
-        
-               
-                <div class="form-group">
-                    <button type="submit" class="btn text-dark update">Save</button>
-                </div>
-        
+    <div class="col-md-6 offset-md-3">
+        <span class="anchor" id="formPayment"></span>
+        <hr class="my-5">
+
+        <!-- form card cc payment -->
+        <div class="card card-outline-secondary">
+            <div class="card-body">
+                <h3 class="text-center">Topup</h3>
+                <hr>
+                <form action="/api/topup" method="POST" id="addtopup">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Amount</label>
+                        <input type="text" class="form-control" id="amount" name="amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Ref</label>
+                        <input type="text" class="form-control" id="ref" name="ref">
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
 </body>
+
 </html>

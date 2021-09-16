@@ -1,103 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('includes/head'); %>
-  <link rel="stylesheet" href="/css/register.css">
-<body>
-  <%- include('includes/nav'); %>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto">
-        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-          <div class="card-img-left d-none d-md-flex">
-            <!-- Background image for card set in CSS! -->
-          </div>
-          <div class="card-body p-4 p-sm-5">
-            <h5 class="card-title text-center mb-5 fw-light fs-5">LOLIPOPZ REGISTER </h5>
-            <% if (message) { %>
-              <div class="alert alert-<%= message.type %>" role="alert">
-                <%= message.body %>
-                
-              </div>
-            <% } %>
-            <form method="POST" action="/register">
+<%- include('includes/head'); %>
+    <link rel="stylesheet" href="/css/register.css">
 
-              <div class="form-floating mb-3">
-                <label for="floatingInputUsername">Username</label>
-                <input
-                type="text"
-                class="form-control <%= errors.username ? 'is-invalid' : '' %>"
-                id="username"
-                name="username"
-                value="<%= formData.username %>"
-                maxlength="64"
-                minlength="2"
-                placeholder="Username"
-                required
-              />
-              <% if (errors.username) { %>
-                <div class="invalid-feedback">
-                  <%= errors.username[0] %>
+    <body>
+        <%- include('includes/nav'); %>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-xl-9 mx-auto">
+                        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                            <div class="card-img-left d-none d-md-flex">
+                                <!-- Background image for card set in CSS! -->
+                            </div>
+                            <div class="card-body p-4 p-sm-5">
+                                <h5 class="card-title text-center mb-5 fw-light fs-5">LOLIPOPZ REGISTER </h5>
+                                <% if (message) { %>
+                                    <div class="alert alert-<%= message.type %>" role="alert">
+                                        <%= message.body %>
+
+                                    </div>
+                                    <% } %>
+                                        <form method="POST" action="/register">
+
+                                            <div class="form-floating mb-3">
+                                                <label for="floatingInputUsername">Username</label>
+                                                <input type="text" class="form-control <%= errors.username ? 'is-invalid' : '' %>" id="username" name="username" value="<%= formData.username %>" maxlength="64" minlength="2" placeholder="Username" required />
+                                                <% if (errors.username) { %>
+                                                    <div class="invalid-feedback">
+                                                        <%= errors.username[0] %>
+                                                    </div>
+                                                    <% } %>
+                                            </div>
+
+
+                                            <div class="form-floating mb-3">
+                                                <label for="floatingInputEmail">Email address</label>
+                                                <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email" name="email" value="<%= formData.email %>" aria-describedby="emailHelp" placeholder="name@example.com" required />
+                                                <% if (errors.email) { %>
+                                                    <div class="invalid-feedback">
+                                                        <%= errors.email[0] %>
+                                                    </div>
+                                                    <% } %>
+                                                        <div id="emailHelp" class="form-text">
+                                                            We'll never share your email with anyone else.
+                                                        </div>
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="form-floating mb-3">
+                                                <label for="floatingPassword">Password</label>
+                                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+
+                                            </div>
+
+                                            <div class="form-floating mb-3">
+                                                <label for="floatingPasswordConfirm">Confirm Password</label>
+                                                <input type="password" class="form-control <%= errors.password ? 'is-invalid' : '' %>" id="repeat_password" name="repeat_password" placeholder="confirm password" required />
+
+                                            </div>
+
+                                            <div class="d-grid mb-2">
+                                                <center><button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button> </center>
+                                            </div>
+
+                                            <a class="d-block text-center mt-2 small" id="haveact" href="/login">Have an account? Sign In</a>
+
+                                            <hr class="my-4">
+                                        </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              <% } %>
-              </div>
-
-              
-              <div class="form-floating mb-3">
-                <label for="floatingInputEmail">Email address</label>
-                <input
-                type="email"
-                class="form-control <%= errors.email ? 'is-invalid' : '' %>"
-                id="email"
-                name="email"
-                value="<%= formData.email %>"
-                aria-describedby="emailHelp"
-                placeholder="name@example.com"
-                required
-              />
-              <% if (errors.email) { %>
-                <div class="invalid-feedback">
-                  <%= errors.email[0] %>
-                </div>
-              <% } %>
-              <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
-              </div>
-              </div>
-
-              <hr>
-
-              <div class="form-floating mb-3">
-                <label for="floatingPassword">Password</label>
-                <input type="password" class="form-control" id="floatingPassword" name = "password" placeholder="Password">
-                
-              </div>
-
-              <div class="form-floating mb-3">
-                <label for="floatingPasswordConfirm">Confirm Password</label>
-                <input
-                type="password"
-                class="form-control <%= errors.password ? 'is-invalid' : '' %>"
-                id="repeat_password"
-                name="repeat_password"
-                placeholder="confirm password"
-                required
-              />
-                
-              </div>
-
-              <div class="d-grid mb-2">
-               <center><button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button> </center> 
-              </div>
-
-              <a class="d-block text-center mt-2 small" id="haveact" href="/login">Have an account? Sign In</a>
-
-              <hr class="my-4">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+            </div>
+    </body>
     <%- include('includes/footer'); %>
+
 </html>

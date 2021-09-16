@@ -127,7 +127,8 @@ router.get('/profile', authMiddleware, (req, res) => {
         profile: {
             username: req.user.username,
             email: req.user.email,
-            point: req.user.point
+            point: req.user.point,
+            admin: req.user.admin
         }
     })
 

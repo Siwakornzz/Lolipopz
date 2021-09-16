@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
 
 const topupSchema = mongoose.Schema({
-    username:{
+    username: {
         type: String
     },
-    amount:{
+    amount: {
         type: Number
     },
-    ref:{
+    ref: {
         type: String
     },
-    status:{
-        type: Boolean,
-        default : 0 
+    status: {
+        type: String,
+        default: "waiting"
     },
-},{
-    timestamps : true
+}, {
+    timestamps: true
 })
 
 const Topup = mongoose.model('topup', topupSchema)
