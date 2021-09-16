@@ -1,69 +1,72 @@
-<link rel="stylesheet" href="/css/checktopup.css" />
 <!DOCTYPE html>
 <html lang="en">
 <%- include('includes/head'); %>
-
+<link rel="stylesheet" href="/css/index.css">
     <body>
         <%- include('includes/navadmin'); %>
-            <div class="container">
-                <% if (message.type) { %>
-                    <div class="alert alert-<%= message.type%>" role="alert">
-                        <%= message.body %>
-                    </div>
-                    <% } %>
-                        <div class="container">
-                            <table class="responsive-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">NO.</th>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">Amount</th>
-                                        <th scope="col">Ref</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% for(var i = 0; i < topup.length; i++) { %>
+           <div class="container">
+            <br>
+               <div class="row">
+                  
+      
+                   <div class="card" width=30rem>
+                    <br>
+                        <h3 class ='card-title'> Topup Status</h3>
+                        <hr>
 
-
-                                        <tr>
-                                            <td>
-                                                <%= i + 1 %>
-                                            </td>
-                                            <td>
-                                                <%= topup[i].username %>
-                                            </td>
-                                            <td>
-                                                <%= topup[i].amount %>
-                                            </td>
-                                            <td>
-                                                <%= topup[i].ref %>
-                                            </td>
-                                            <td>
-                                                <%= topup[i].status %>
-                                            </td>
-                                            <td>
-                                                <a href="/updatetopup?id=<%= topup[i]._id%>" class="btn border-shadow update">
-                                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
-                                                    Update
-                                                </a>
-                                                <a class="btn border-shadow delete" data-id=<%=topup[i]._id%> >
-                                                    Delete
-                                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <% } %>
-                                </tbody>
+                        <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">NO.</th>
+                                <th scope="col">Username</th>
+                                 <th scope="col">Amount</th>
+                                 <th scope="col">Ref</th>
+                                 <th scope="col">Status</th>
+                                 <th scope="col">Menu</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                              <% for(var i = 0; i < topup.length; i++) { %>
+                                <tr>
+                                  <th scope="row"><%= i + 1 %></th>
+    
+                                  
+                                    <td>
+                                        <%= topup[i].username %>
+                                    </td>
+                                    <td>
+                                        <%= topup[i].amount %>
+                                    </td>
+                                    <td>
+                                        <%= topup[i].ref %>
+                                    </td>
+                                    <td>
+                                        <%= topup[i].status %>
+                                    </td>
+                                   
+                                  <td>
+                                      <a href="/updatetopup?id=<%= topup[i]._id%>" class="btn btn-warning update"> Update <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span></a>
+                                  
+                                    <a class="btn btn-danger delete" data-id=<%=topup[i]._id%>  <span class="text-gradient"> Delete  <i class="fas fa-times"></i></span>
+                                  </td>
+                                </tr>
+                                <% } %>
                             </table>
-                        </div>
-                       
-            </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>
-            <script src="/javascript/index.js "></script>
-            <%- include('includes/footer'); %>
+                           
+                        </table>
+                        
+                    </tbody>
+                   </div>
+               </div>
+           </div>
+           
+
 
     </body>
+    <%- include('includes/footer'); %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>
+    <script src="/javascript/index.js "></script>
+    
 
 </html>
