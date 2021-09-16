@@ -130,13 +130,16 @@ router.get('/profile',authMiddleware,(req,res) => {
 
 })
 
+// index page
+
+
 // router crud api user
 router.get('/adduser', services.adduser)
 
 router.get('/updateuser', services.updateuser)
 
 // router crud api product
-router.get('/addproduct', services.addproduct)
+router.get('/addproduct',authMiddleware, services.addproduct)
 router.get('/updateproduct', services.updateproduct)
 
 // API User
