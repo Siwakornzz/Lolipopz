@@ -50,28 +50,35 @@
 
                                             <div class="form-floating mb-3">
                                                 <label for="floatingPassword">Password</label>
-                                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
 
+                                                <% if (message.password) { %>
+                                                    <div class="invalid-feedback">
+                                                        <%= message.password[0] %>
+                                                    </div>
+                                                    <% } %>
                                             </div>
 
-                                            <div class="form-floating mb-3">
-                                                <label for="floatingPasswordConfirm">Confirm Password</label>
-                                                <input type="password" class="form-control <%= errors.password ? 'is-invalid' : '' %>" id="repeat_password" name="repeat_password" placeholder="confirm password" required />
-
-                                            </div>
-
-                                            <div class="d-grid mb-2">
-                                                <center><button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button> </center>
-                                            </div>
-
-                                            <a class="d-block text-center mt-2 small" id="haveact" href="/login">Have an account? Sign In</a>
-
-                                            <hr class="my-4">
-                                        </form>
                             </div>
+
+                            <div class="form-floating mb-3">
+                                <label for="floatingPasswordConfirm">Confirm Password</label>
+                                <input type="password" class="form-control <%= errors.password ? 'is-invalid' : '' %>" id="repeat_password" name="repeat_password" placeholder="confirm password" required />
+
+                            </div>
+
+                            <div class="d-grid mb-2">
+                                <center><button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button> </center>
+                            </div>
+
+                            <a class="d-block text-center mt-2 small" id="haveact" href="/login">Have an account? Sign In</a>
+
+                            <hr class="my-4">
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
     </body>
     <%- include('includes/footer'); %>

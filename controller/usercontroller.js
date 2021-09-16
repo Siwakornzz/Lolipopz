@@ -1,36 +1,5 @@
 const User = require('../modules/users/models/User');
-const bcrypt = require('bcrypt')
 
-exports.usercreate = (req, res) => {
-    if (!req.body) {
-        res.status(400).send({ message: "Content Can't be empty! " });
-        return;
-    }
-
-
-
-    // new user
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        admin: req.body.admin,
-        point: req.body.point
-    })
-
-    // save user in database
-    user
-        .save(user)
-        .then(data => {
-
-            res.redirect('/adduser')
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while creating a create operation"
-            })
-        })
-}
 
 // retrieve and return all users / retrive and return a single users
 

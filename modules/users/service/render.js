@@ -9,12 +9,6 @@ exports.users = (req, res) => {
         .catch(err => {
             res.send(err);
         })
-
-
-}
-
-exports.adduser = (req, res) => {
-    res.render('adduser');
 }
 
 exports.updateuser = (req, res) => {
@@ -37,8 +31,6 @@ exports.products = (req, res) => {
         .catch(err => {
             res.send(err);
         })
-
-
 }
 
 exports.checkproduct = (req, res) => {
@@ -50,8 +42,6 @@ exports.checkproduct = (req, res) => {
         .catch(err => {
             res.send(err);
         })
-
-
 }
 
 exports.addproduct = (req, res) => {
@@ -91,10 +81,7 @@ exports.checktopup = (req, res) => {
         .catch(err => {
             res.send(err);
         })
-
-
 }
-
 
 exports.addtopup = (req, res) => {
     res.render('topup');
