@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head'); %>
+    <%- include('includes/nav'); %>
+        <!-- Main Site -->
+        <main id="site-main">
+            <div class="container">
+                <div class="box-nav d-flex justify-between">
+                    <a href="/add-user" class="border-shadow">
+                        <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+                    </a>
+                </div>
+
+                <!-- form handling -->
+                <form action="/user" method="POST">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>@Email</th>
+                                <th>Point</th>
+                                <th>Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i = 0; i < users.length; i++) { %>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <%= i + 1 %>
+                                        </td>
+                                        <td>
+                                            <%= users[i].username %>
+                                        </td>
+                                        <td>
+                                            <%= users[i].password %>
+                                        </td>
+                                        <td>
+                                            <%= users[i].email %>
+                                        </td>
+                                        <td>
+                                            <%= users[i].point %>
+                                        </td>
+                                        <td>
+                                            <%= users[i].status %>
+                                        </td>
+                                        <td>
+                                            <a href="/updateuser?id=<%= users[i]._id%>" class="btn border-shadow update">
+                                                <span class="text-gradient">update<i class="fas fa-pencil-alt"></i></span>
+                                            </a>
+                                            <a class="btn border-shadow delete" data-id=<%=users[i]._id%> >
+                                                    delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                        </tbody>
+                        </table>
+                </form>
+            </div>
+        </main>
+        <!-- /Main Site -->
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>
+        <script src="/javascript/index.js "></script>
+        <%- include('includes/footer'); %>
+            <!-- /include footer -->

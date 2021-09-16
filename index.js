@@ -19,11 +19,11 @@ app.set('view engine', 'ejs')
 app.use(express.static("public"));
 // app.set('trust proxy', 1)
 app.use(session({
-  secret: '4ad8e54c95800e9668650ce54b99829e4a5b5d53',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false},
-  store: new MongoStore({ mongooseConnection: mongoDbConnection })
+    secret: '4ad8e54c95800e9668650ce54b99829e4a5b5d53',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+    store: new MongoStore({ mongooseConnection: mongoDbConnection })
 }))
 app.use(logger('dev'))
 app.use(passport.initialize())
@@ -34,27 +34,27 @@ app.locals.errors = {}
 
 app.use('/', authRoutes)
 
-app.get('/', isloginMiddleware,flasherMiddleware, (req, res) => {
-  console.log(req.method)
-  console.log('User:', req.user)
-  return res.render('index')
+app.get('/', isloginMiddleware, flasherMiddleware, (req, res) => {
+    console.log(req.method)
+    console.log('User:', req.user)
+    return res.render('index')
 })
 
-app.get('/home',authMiddleware, (req, res) => {
+app.get('/home', authMiddleware, (req, res) => {
 
     return res.render('home')
 })
 
-app.get('/admin', isadminMiddleware , (req, res) => {
- res.render('admin')
+app.get('/admin', isadminMiddleware, (req, res) => {
+    res.render('admin')
 })
 
 app.use((req, res, next) => {
-  res.status(404).render('404')
+    res.status(404).render('404')
 })
 
 app.listen(3000, () => {
-  console.log('Server running at port 3000')
+    console.log('Server running at port 3000')
 })
 
 module.exports = app

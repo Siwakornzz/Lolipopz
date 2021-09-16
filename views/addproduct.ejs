@@ -1,9 +1,9 @@
 <main id="site-main">
     <div class="container">
         <div class="box-nav d-flex justify-between">
-           <div class="filter">
-               <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
-           </div>
+            <div class="filter">
+                <a href="/"><i class="fas fa-angle-double-left"></i> All Product</a>
+            </div>
         </div>
         <div class="form-title text-center">
             <h2 class="text-dark">New User</h2>
@@ -11,27 +11,27 @@
         </div>
 
         <!-- add user form -->
-      <!-- form handling -->
- <form action="/api/product" method="POST" id="add_user">
-    <div class="new_product">
-        <div class="form-group">
-            <label for="name" class="text-light">Name</label>
-            <input type="hidden" name="id" value="">
-            <input type="text" name="name" value="" placeholder="Mark Stoenis">
-        </div>
-        <div class="form-group">
-            <label for="img" class="text-light">Img</label>
-            <input type="text" name="img" value="" placeholder="example@gmail.com">
-        </div>
-       
+        <!-- form handling -->
+        <form action="/api/product" method="POST" id="add_user">
+            <div class="new_product">
+                <div class="form-group">
+                    <label for="name" class="text-light">Name</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="name" value="" placeholder="Mark Stoenis">
+                </div>
+                <div class="form-group">
+                    <label for="img" class="text-light">Img</label>
+                    <input type="text" name="img" value="" placeholder="example@gmail.com">
+                </div>
 
-       
-        <div class="form-group">
-            <button type="submit" class="btn text-dark update">Save</button>
-        </div>
 
-    </div>
-</form>
-       
+
+                <div class="form-group">
+                    <button type="submit" class="btn text-dark update">Save</button>
+                </div>
+
+            </div>
+        </form>
+
     </div>
 </main>
