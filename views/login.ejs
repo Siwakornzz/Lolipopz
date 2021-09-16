@@ -1,57 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('includes/head'); %>
+  <link rel="stylesheet" href="/css/login.css">
   <body>
     <%- include('includes/nav'); %>
     <div class="container">
-      <h1>Login</h1>
-      <% if (message.type) { %>
-        <div class="alert alert-<%= message.type %>" role="alert">
-          <%= message.body %>
-        </div>
-      <% } %>
+      
       <form method="POST" action="/login">
+          <div class="container-fluid ps-md-0">
+            <div class="row g-0">
+              <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+              <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-9 col-lg-8 mx-auto">
+                        <h3 class="login-heading mb-4">LOLIPOPZ LOGIN</h3>
+                        <% if (message.type) { %>
+                          <div class="alert alert-<%= message.type %>" role="alert">
+                            <%= message.body %>
+                          </div>
+                        <% } %>
+          
+                        <!-- Sign In Form -->
+                        <form>
+                          <div class="form-floating mb-3">
+                            <label for="username">Username  </label>
+                            <input
+                              type="text"
+                              class="form-control <%= errors.username ? 'is-invalid' : '' %>"
+                              id="username"
+                              name="username"
+                              value="<%= formData.username %>"
+                              maxlength="64"
+                              minlength="2"
+                              placeholder="Username"
+                              required
+                            />
+                            <% if (errors.username) { %>
+                              <div class="invalid-feedback">
+                                <%= errors.username[0] %>
+                              </div>
+                            <% } %>
+                           
+                          </div>
+                          <div class="form-floating mb-3">
+                            <label for="floatingPassword">Password</label>
+                            <input type="password" class="form-control <%= errors.password ? 'is-invalid' : '' %>" id="floatingPassword" placeholder="Password" name ="password" value="<%= formData.password %>" required>
+                            <% if (errors.password) { %>
+                              <div class="invalid-feedback">
+                                <%= errors.password[0] %>
+                              </div>
+                            <% } %>
+                          </div>
+                            
+                          </div>
 
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input
-              type="text"
-              class="form-control <%= errors.username ? 'is-invalid' : '' %>"
-              id="username"
-              name="username"
-              value="<%= formData.username %>"
-              maxlength="64"
-              minlength="2"
-              required
-            />
-            <% if (errors.username) { %>
-              <div class="invalid-feedback">
-                <%= errors.username[0] %>
+                          <center><div class="d-grid">
+                            <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
+                            <div class="text-center">
+                              <a class="small" href="/register" id='btnregister'>Create an account</a>
+                            </div>
+                          </div></center>
+          
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            <% } %>
-          </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control <%= errors.password ? 'is-invalid' : '' %>"
-            id="password"
-            name="password"
-            value="<%= formData.password %>"
-            required
-          />
-          <% if (errors.password) { %>
-            <div class="invalid-feedback">
-              <%= errors.password[0] %>
             </div>
-          <% } %>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+    
 
       </form>
-      <%- include('includes/footer'); %>
+     
     </div>
+   
+      
+    </div>
+    <%- include('includes/footer'); %>
   </body>
 </html>

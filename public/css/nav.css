@@ -1,12 +1,38 @@
 .navbar-custom{
-    background-color: rgba(15,15,15,0.9);
+    background-color: black;
     border-bottom: 2px solid #e41e26;
 }
-
-a{
-    color :#fff;
-    text-decoration: none;
+.navbar-brand{
+    font-size :22 px;
+    margin-left : 15%;
 }
-a:hover{
+.navbar-brand:hover{
+    font-size :22 px;
+    margin-left : 15%;
+    color:rgb(155, 155, 155)
+}
+#a,#logo{
+    color : white;
+    text-decoration: none;
+    font-size : 22px;
+}
+#a:hover{
     color : rgb(155, 155, 155);
+}
+#logo:hover{
+    color: rgb(155, 155, 155)
+}
+
+#imglogo{
+    border-color : black;
+    border-style : solid 2px;
+}
+
+#alr{
+    text-decoration: none;
+    margin-top : 5px;
+}
+
+#registertext{
+    text-align : center;
 }
