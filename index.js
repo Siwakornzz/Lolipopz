@@ -41,7 +41,9 @@ app.get('/', isloginMiddleware, flasherMiddleware, (req, res) => {
 })
 
 app.get('/home', authMiddleware, (req, res) => {
-
+    if(req.user.admin == 1){
+        return res.redirect('/admin')
+    }
     return res.render('home')
 })
 
