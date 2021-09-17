@@ -60,6 +60,7 @@ $("#updateproduct").submit(function(event) {
 
     $.map(unindexed_array, function(n, i) {
         data[n['name']] = n['value']
+
             // console.log(data.password)
     })
 

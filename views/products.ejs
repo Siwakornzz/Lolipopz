@@ -4,8 +4,6 @@
 <link rel="stylesheet" href="/css/card.css">
 <link rel="stylesheet" href="/css/index.css">
 
-<script>
-    </script>
     
     <body>
         <%- include('includes/navuser'); %>
@@ -16,6 +14,7 @@
                         <%= message.body %>
                     </div>
                     <% } %>
+
                     <h1 class="card-title" style="color: #fff;"> <i class="icon-shopping-cart"></i> SHOP </h1>
                    <center><div class="card" style="width: 50rem;">
                         
@@ -44,7 +43,7 @@
                                             <div class="card-text">
                                                 <%= products[i].price %> Point
                                             </div>
-                                            <button onclick=buy(id) class="card-button">Purchase </button> 
+                                            <button class="card-button">Purchase </button> 
                                         </div>
                                         <br>
                                     </div>
