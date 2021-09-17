@@ -1,37 +1,66 @@
-<main id="site-main">
-    <div class="container">
-        <div class="box-nav d-flex justify-between">
-            <div class="filter">
-                <a href="/"><i class="fas fa-angle-double-left"></i> All Product</a>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head'); %>
+<link rel="stylesheet" href="/css/index.css">
+    <body>
+        <%- include('includes/navadmin'); %>
+        <main id="site-main">
+            <div class="container">
+                <br><br><br>
+                <div class="row">
+                    <center><div class="card" style="width: 23rem;">
+                    <br>
+                        <h3 class ='card-title'> &nbsp; ADD PRODUCT</h3>
+                        <hr>
+                        <form action="/api/product" method="POST" id="addproduct">
+                            <div class="newproduct">      
+                                <div class="form-group">
+                                    <p>Name :
+                                        <input type="text" name="name" value="" placeholder="">
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="">
+                                    <p>   IMG : 
+                                        <input type="text" name="img" id="img" value="" placeholder="">  
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <p>version : 
+                                        <input type="text" name="version" value="" placeholder="">
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <p>Price : 
+                                        <input type="text" name="price" value="" placeholder="">
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <p>Description : 
+                                        <input type="text" name="description" value="" placeholder="">
+                                    </p>
+                                </div>
+ 
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success update">Save</button>
+                                </div>
+                                <br>
+                                
+                            </div>
+        
+                        </form>
+                </div></center>
+                </div>
+                </div>
+                <!-- add user form -->
+                <!-- form handling -->
+               
             </div>
-        </div>
-        <div class="form-title text-center">
-            <h2 class="text-dark">New User</h2>
-            <span class="text-light">Use the below form to create a new account</span>
-        </div>
 
-        <!-- add user form -->
-        <!-- form handling -->
-        <form action="/api/product" method="POST" id="addproduct">
-            <div class="new_product">
-                <div class="form-group">
-                    <label for="name" class="text-light">Name</label>
-                    <input type="hidden" name="id" value="">
-                    <input type="text" name="name" value="" placeholder="Mark Stoenis">
-                </div>
-                <div class="form-group">
-                    <label for="img" class="text-light">Img</label>
-                    <input type="text" name="img" value="" placeholder="example@gmail.com">
-                </div>
+        </main>
+        <%- include('includes/footer'); %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="/javascript/index.js"></script>
+    </body>
 
-
-
-                <div class="form-group">
-                    <button type="submit" class="btn text-dark update">Save</button>
-                </div>
-
-            </div>
-        </form>
-
-    </div>
-</main>
+</html>
