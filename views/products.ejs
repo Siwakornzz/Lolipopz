@@ -2,27 +2,39 @@
 <html lang="en">
 <%- include('includes/head'); %>
 <link rel="stylesheet" href="/css/card.css">
+<link rel="stylesheet" href="/css/index.css">
+
+<script>
+    </script>
+    
     <body>
-        <%- include('includes/nav'); %>
+        <%- include('includes/navuser'); %>
+ 
             <div class="container" style="margin-top:50px;" >
-                <div class="row">
-                    
                 <% if (message.type) { %>
                     <div class="alert alert-<%= message.type%>" role="alert">
                         <%= message.body %>
                     </div>
                     <% } %>
+                    <h1 class="card-title" style="color: #fff;"> <i class="icon-shopping-cart"></i> SHOP </h1>
+                   <center><div class="card" style="width: 50rem;">
+                        
+                    <div class="card-body">
+                        <br>
 
-                      
+                    <div class="row">
                         <% for(let i = 0; i < products.length; i++) { %>
+                           
                             <div class="col-md-4">
-                                        <div class="card-sl">
+                                        <div class="card-sl" style="margin-left : 16px;">
+                                            
+                                            <input type="hidden" name="id" value=<%=products._id %>>
                                             <div class="card-image">
                                                 <img
                                                     src="<%= products[i].img%> " />
                                             </div>
                         
-                                            <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     
                                             <div class="card-heading">
                                                 <%= products[i].name %> 
                                             </div>
@@ -32,13 +44,16 @@
                                             <div class="card-text">
                                                 <%= products[i].price %> Point
                                             </div>
-                                            <a href="" class="card-button">Purchase </a>
+                                            <button onclick=buy(id) class="card-button">Purchase </button> 
                                         </div>
                                         <br>
                                     </div>
+                              
                         <% } %>
-               
                     </div>
+                    </div>
+                    </div></center> 
+                </div>
             </div>
         
         </body>

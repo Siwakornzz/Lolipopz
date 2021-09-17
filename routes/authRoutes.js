@@ -146,6 +146,9 @@ router.get('/user',isadminMiddleware, services.users)
 
 router.get('/updateuser', services.updateuser)
 
+// router buy api 
+
+
 // router crud api product
 router.get('/checkproduct', isadminMiddleware,services.checkproduct)
 router.get('/addproduct', isadminMiddleware, services.addproduct)

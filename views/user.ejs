@@ -3,7 +3,7 @@
 <%- include('includes/head'); %>
 <link rel="stylesheet" href="/css/index.css">
     <body>
-        <%- include('includes/navadmin'); %>
+      <%- include('includes/navadmin'); %>
            <div class="container">
             <br>
                <div class="row">
@@ -11,7 +11,7 @@
       
                    <div class="card" width=30rem>
                     <br>
-                        <h3 class ='card-title'> User</h3>
+                        <h3 class ='card-title'> USER MANAGEMENT</h3>
                         <hr>
 
                         <table class="table">
@@ -22,7 +22,9 @@
                                 <th scope="col">Password</th>
                                 <th scope="col">@Email</th>
                                 <th scope="col">Point</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Admin</th>
+                                <th scope="col"> MENU</th>
+                                <th scope="col"> MENU</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -34,10 +36,11 @@
                                     <td> <%= users[i].password %></td>
                                     <td><%= users[i].email %> </td>
                                     <td><%= users[i].point %> </td>
-                                    <td> <%= users[i].status %></td>
+                                    <td> <%= users[i].admin %></td>
                                   <td>
                                       <a href="/updateuser?id=<%= users[i]._id%>" class="btn btn-warning update"> Update <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span></a>
-                                  
+                                      </td>
+                                  <td>
                                     <a class="btn btn-danger delete" data-id=<%=users[i]._id%>  <span class="text-gradient"> Delete  <i class="fas fa-times"></i></span>
                                   </td>
                                 </tr>

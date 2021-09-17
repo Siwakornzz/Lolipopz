@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-
+const Schema = mongoose.Schema,ObjectId = Schema.ObjectId;
 const userSchema = mongoose.Schema({
     username:{
         type: String,
@@ -34,7 +34,23 @@ const userSchema = mongoose.Schema({
     isDelete:{
         type:Boolean,
         default:false
-    }
+    },
+    userhasproduct:[{
+        userid :{
+            type: ObjectId
+        },
+        productid:{
+            type: ObjectId
+        },
+        date:{
+            type: Date,
+            default: Date.now()
+        },
+        price:{
+            type: Number
+        },
+    }]
+    
 },{
     timestamps:true
 })
