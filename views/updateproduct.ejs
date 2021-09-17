@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('includes/head'); %>
-<link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
+
     <body>
         <%- include('includes/navadmin'); %>
-        <main id="site-main">
-            <div class="container">
-                <br><br><br>
-                <div class="row">
-                    <center><div class="card" style="width: 23rem;">
-                    <br>
-                        <h3 class ='card-title'> &nbsp; PRODUCT MANAGEMENT</h3>
-                        <hr>
-                        <form method="POST" id="updateproduct">
-                            <div class="newproduct">
-                                <div class="form-group">
-                                    <input type="hidden" name="id" value=<%=product._id %>>
-                                    <p>   IMG : 
-                                        <input type="text" name="img" id="img" value="<%= product.img %>" placeholder="">  
-                                    </p>
-                                </div>
-                                <div class="form-group">
-                                    <p>Name :
-                                        <input type="text" name="name" value="<%= product.name%>" placeholder="">
-                                    </p>
-                                </div>
-                                <div class="form-group">
-                                    <p>Description : 
-                                        <input type="text" name="description" value="<%=product.version%>" placeholder="">
-                                    </p>
-                                </div>
-                                <div class="form-group">
-                                    <p>Price : 
-                                        <input type="text" name="price" value="<%=product.price%>" placeholder="">
-                                    </p>
-                                </div>
-        
-        
-        
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-success update">Save</button>
-                                </div>
+            <main id="site-main">
+                <div class="container">
+                    <br><br><br>
+                    <div class="row">
+                        <center>
+                            <div class="card" style="width: 23rem;">
                                 <br>
-                                
+                                <h3 class='card-title'> &nbsp; PRODUCT MANAGEMENT</h3>
+                                <hr>
+                                <form method="POST" id="updateproduct">
+                                    <div class="newproduct">
+                                        <div class="form-group">
+                                            <input type="hidden" name="id" value=<%=product._id %>>
+                                            <p> IMG :
+                                                <input type="text" name="img" id="img" value="<%= product.img %>" placeholder="">
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>Name :
+                                                <input type="text" name="name" value="<%= product.name%>" placeholder="">
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>Description :
+                                                <input type="text" name="description" value="<%=product.description%>" placeholder="">
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>Version :
+                                                <input type="text" name="version" value="<%=product.version%>" placeholder="">
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>Price :
+                                                <input type="text" name="price" value="<%=product.price%>" placeholder="">
+                                            </p>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success update">Save</button>
+                                        </div>
+                                        <br>
+
+                                    </div>
+
+                                </form>
                             </div>
-        
-                        </form>
-                </div></center>
-                </div>
+                        </center>
+                    </div>
                 </div>
                 <!-- add user form -->
                 <!-- form handling -->
-               
-            </div>
 
-        </main>
-        <%- include('includes/footer'); %>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-        <script src="/javascript/index.js"></script>
+                </div>
+
+            </main>
+            <%- include('includes/footer'); %>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+                <script src="/javascript/index.js"></script>
     </body>
 
 </html>
